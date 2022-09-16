@@ -14,14 +14,13 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 //Using crypto.getRandomValues to get a more secure random value.
-function rDec (charSetLength) {
+function rDec () {
   let array = new Uint32Array(1);
   self.crypto.getRandomValues(array);
 
 //The following operations ensure that we get an even distribution of values for each character in the usable set.
-  val = array[0]/(charSetLength) 
-  rDecimal = val - Math.floor(val)
-  return rDecimal
+  val = array[0]/(2 ** 32)
+  return val
 }
 
 //Prompts
@@ -77,7 +76,7 @@ function generatePassword(){
     newPass = ""; //Defines the new password as an empty string to add the new characters in
 
     for (i = 0, n = charSet.length; i < length; i ++){
-      newPass += charSet.charAt(Math.floor(rDec(n)* n)); //Generates password using rDec function from line 17-24
+      newPass += charSet.charAt(Math.floor(rDec()* n)); //Generates password using rDec function from line 17-24
     }
 
     return newPass

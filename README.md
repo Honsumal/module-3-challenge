@@ -9,7 +9,7 @@ This application generates a random password of length between 8 and 128 charact
 This function takes the password generated from generatePassword (seen below), and casts it onto a box after it is generated.
 
 ### rDec
-This function creates a random number between 0 and 1 by using the crypto.getRandomValues method. Dividing by the length of the Character Set allows for the function to generate an even spread of decimals across the span of the character list.
+This function creates a random number between 0 and 1 by using the crypto.getRandomValues method. Dividing by 2<sup>32</sup> allows for the function to generate an even spread of decimals across the span of the character list as the max value of an unsigned 32-bit array is 2<sup>32</sup> - 1.
 
 ### generatePassword
 This function contains both the charSelect and makePassword functions. The first part of the function asks the user to input the desired length of their password, with redundancy built in to ensure a valid input is recieved.
